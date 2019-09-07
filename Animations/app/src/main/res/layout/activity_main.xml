@@ -4,4 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/bartImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="fadeSimpson"
+        app:srcCompat="@drawable/bart_clipart0" />
+
+    <ImageView
+        android:id="@+id/homerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:alpha="0"
+        android:onClick="fadeSimpson"
+        app:srcCompat="@drawable/homer_clipart0" />
+</android.support.constraint.ConstraintLayout>
