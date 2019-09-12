@@ -113,11 +113,12 @@
 
     <LinearLayout
         android:id="@+id/playAgainLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="345dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/play_again_layout_bg"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,7 +133,7 @@
             android:layout_gravity="center"
             android:text="Winner"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="48sp" />
 
         <Button
             android:id="@+id/playAgainButton"
@@ -140,10 +141,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/winnerTextView"
             android:layout_gravity="center"
-            android:background="#AA00FF"
+            android:background="@drawable/play_again_button_bg"
             android:onClick="playAgain"
             android:text="Play Again"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="36sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
