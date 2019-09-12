@@ -11,8 +11,8 @@ public class MainActivity extends AppCompatActivity {
     String activePlayer = "H"; //H: Human, C: Computer
     String[] gameStates = {"E","E","E","E","E","E","E","E","E"}; //E: Empty, R: Red, Y: Yellow
     int[][] winningStates = {{0,1,2}, /* ### */
-                            {3,4,5}, /* ### */
-                            {6,7,8}, /* ### */
+                             {3,4,5}, /* ### */
+                             {6,7,8}, /* ### */
 
                             {0,4,8}, /* #** */
                                      /* *#* */
@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void playAgain(View playAgainView){
+
     }
 
     @Override
