@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
                             {2,      /* **# */
                              5,      /* **# */
                              8}};    /* **# */
+    boolean wonFlag = false;
+    String winner = "E";
 
     public void dropIn(View capView){
         ImageView capImageView = (ImageView) capView;
         int currentTappedCap = Integer.parseInt(capImageView.getTag().toString());
 
-        if(gameStates[currentTappedCap] == "E") {
+        if(gameStates[currentTappedCap] == "E" && !wonFlag) {
             capImageView.setAlpha(0f);
             capImageView.setRotation(-3600);
 
@@ -57,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
                         gameStates[winningState[1]] == gameStates[winningState[2]] &&
                         gameStates[winningState[0]] != "E"){
 
+                    wonFlag = true;
                     Log.i("Info: ",gameStates[winningState[0]]);
+                    if(gameStates[winningState[0]] == "Y") {
+                        winner = "Yellow";
+                    } else {
+                        winner = "Red";
+                    }
+
                     for(int winningStateChunk : winningState) {
                         //animateCapView(findViewById(getResources().getIdentifier("capImageView" + winningStateChunk,"id",getPackageName())));
                         findViewById(getResources().getIdentifier("capImageView" + winningStateChunk,"id",getPackageName())).setAlpha(0f);
@@ -65,13 +76,35 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(getResources().getIdentifier("capImageView" + winningStateChunk,"id",getPackageName())).setScaleY(0.5f);
                         findViewById(getResources().getIdentifier("capImageView" + winningStateChunk,"id",getPackageName())).animate().alpha(1f).setDuration(300).scaleX(1f).scaleY(1f).setDuration(600);
                     }
+
+                    TextView winnerTextView = findViewById(R.id.winnerTextView);
+                    winnerTextView.setText(winner + " is winner!");
+
+                    final LinearLayout playAgainLayout = findViewById(R.id.playAgainLayout);
+                    playAgainLayout.setAlpha(0f);
+                    playAgainLayout.setY(-100f);
+                    playAgainLayout.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            playAgainLayout.setVisibility(View.VISIBLE);
+                            playAgainLayout.animate().alpha(1f).setDuration(100).translationY(0f).setDuration(300);
+                        }
+                    },600);
                 }
             }
         }
     }
 
-    public void playAgain(View playAgainView){
-
+    public void playAgain(final View playAgainView){
+        final LinearLayout playAgainLayout = findViewById(R.id.playAgainLayout);
+        playAgainLayout.animate().alpha(0f).setDuration(300);
+        playAgainLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                playAgainLayout.setVisibility(View.INVISIBLE);
+            }
+        },300);
+        //playAgainLayout.setVisibility(View.INVISIBLE);
     }
 
     @Override
