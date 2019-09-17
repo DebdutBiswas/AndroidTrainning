@@ -36,10 +36,13 @@ public class MainActivity extends AppCompatActivity {
                              5,      /* **# */
                              8}};    /* **# */
     boolean wonFlag = false;
-    String winner = "E";
+    String winner;
+    int redScore = 0, yellowScore = 0;
 
     public void dropIn(View capView){
         ImageView capImageView = (ImageView) capView;
+        TextView redScoreTextView = findViewById(R.id.redScoreTextView);
+        TextView yellowScoreTextView = findViewById(R.id.yellowScoreTextView);
         int currentTappedCap = Integer.parseInt(capImageView.getTag().toString());
         tappedCount++;
 
@@ -67,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
                     wonFlag = true;
                     Log.i("Info",gameStates[winningState[0]]);
                     if(gameStates[winningState[0]] == "Y") {
+                        yellowScore++;
                         winner = "Yellow";
+                        yellowScoreTextView.setText(String.valueOf(yellowScore));
                     } else {
+                        redScore++;
                         winner = "Red";
+                        redScoreTextView.setText(String.valueOf(redScore));
                     }
 
                     for(int winningStateChunk : winningState) {
