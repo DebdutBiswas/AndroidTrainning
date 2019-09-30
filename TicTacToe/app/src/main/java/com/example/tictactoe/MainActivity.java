@@ -44,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         TextView redScoreTextView = findViewById(R.id.redScoreTextView);
         TextView yellowScoreTextView = findViewById(R.id.yellowScoreTextView);
         int currentTappedCap = Integer.parseInt(capImageView.getTag().toString());
-        tappedCount++;
+        //tappedCount++;
 
         if(gameStates[currentTappedCap] == "E" && !wonFlag) {
+            tappedCount++;
             capImageView.setAlpha(0f);
             capImageView.setRotation(-3600);
 
