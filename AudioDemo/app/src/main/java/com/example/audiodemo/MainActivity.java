@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void pauseAudio(View view) {
         if(demoMediaPlayer.isPlaying()) {
             demoMediaPlayer.pause();
+            playBtn.setText("Play");
         }
     }
 
